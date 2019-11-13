@@ -1,0 +1,76 @@
+---
+title: "ATELIER 4"
+author: "Valentine RENAC"
+date: "13/11/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+> nutriage <- read.csv("C:/Users/UTILISATEUR/Desktop/nutriage.csv")
+names(nutriage)
+```
+
+```{r}
+hist(nutriage$poids)
+```
+```{r}
+H: poids $\sim N(mu,\sigma)$leproblème $\Pr(poids<0) >0$
+```
+
+
+```{r}
+mean(nutriage$poids)
+sd(nutriage$poids)
+```
+
+
+Calculer$\Pr(poids<0)$ avec $poids\sim N(163.9602,9.003368)£
+
+
+```{r}
+pnorm(0, mean(nutriage$poids),sd(nutriage$poids))
+
+```
+## OPTION 2
+Soit $poids=e^X$ avec $X \simN(mu,\sigma).$ Alors $X=ln(poids).$
+```{r}
+X<- log(nutriage$poids)x = hist(X)
+```
+```{r}
+x<- log(nutriage$poids)
+hist(X)
+summary (X)
+Q<- sq(from=0, to=1,by=0.1)
+Q
+qnorm(Q)
+
+```
+qq-plot
+```{r}
+Z<- (X-mean(X))/sd(X)
+n<-lenght(Z)
+n
+Normal <- rnorm(n)
+qqplot(Normal,Z,xlim=c(-3,3))
+par(new=T)
+plot(Z,Z,type="l", col="red",xlim=c(-3,3), ylim=c(-3,3), xlab=" ",ylab="")
+
+
+```
+```{r}
+table(nutriage$cafe)sexe
+mean(nutriage$cafe)
+var(nutriage$cafe)
+lambda <- (mean(nutriage$cafe)+var(nutriage$cafe))/2
+lambda
+simul <- rpois(1000,lambda)
+table(simul)
+```
+
+
+
